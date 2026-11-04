@@ -1,0 +1,15 @@
+services:
+  api:
+    build: .
+    ports:
+      - "8000:8000"
+    env_file:
+      - .env.example
+    environment:
+      DATABASE_URL: sqlite:////data/shortlink.db
+    volumes:
+      - shortlink-data:/data
+    restart: unless-stopped
+
+volumes:
+  shortlink-data:
